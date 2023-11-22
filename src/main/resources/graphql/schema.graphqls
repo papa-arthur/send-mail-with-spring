@@ -1,0 +1,45 @@
+type Mutation {
+    createUser(userInput: CreateUserInput!): UserDto!
+    updateUser(userInput: UpdateUserInput!):UserDto!
+}
+
+type Query {
+    getAllUsers:[UserDto]!
+    getUserByUserId(userId:ID!):UserDto
+}
+
+
+#
+# Inputs
+#
+input CreateUserInput {
+    email: String!
+    role: Role!
+    phone: String!
+    picture: String!
+}
+input UpdateUserInput {
+    userId:ID!
+    name: String
+    email: String
+    phone: String
+    picture: String
+}
+
+#
+# Enums
+#
+enum Role {
+    ADMIN, TALENT, ORGANIZATION
+}
+
+#
+# Types
+#
+type UserDto{
+    userId: String
+    email: String
+    role: Role
+    phone: String
+    picture: String
+}
